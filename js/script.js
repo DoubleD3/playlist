@@ -27,10 +27,10 @@ var mySong = {
 
 var myPlayList = [
 	{
-		"title":"24K Magic",
-		"artist":"Bruno Mars",
+		"title":"God's Plan",
+		"artist":"Drake",
 		"mp3":"https://open.spotify.com/track/6b8Be6ljOzmkOmFslEb23P",
-		"image":"https://images-na.ssl-images-amazon.com/images/I/71Gr9aCHQfL._SY355_.jpg",
+		"image":"http://s3.amazonaws.com/hiphopdx-production/2018/01/Scary-Hours-Drake-COver-Art-620x620.jpg",
 	},
 	{
 		"title":"Sir Duke",
@@ -55,26 +55,39 @@ $( document ).ready(function() {
   $('body').append("<p>Artist " + mySong.artist + "</p>");
   $('body').append("<p>Artist " + mySong.image + "</p>");
 
-displayList();
-
-});
 
 function displayList(){
 for( var i=0; i< myPlayList.length; i++){
- $(".songs").append(myPlayList[i].title + "<br>" + myPlayList[i].artist + "<br>" + myPlayList[i].mp3);   
+ $(".songs").append(myPlayList[i].title + "<br>" + myPlayList[i].artist + "<br>" + myPlayList[i].mp3 + "<br>");   
 }
 
-  
-}
-
-function clearList(){
-  
-  
   
 }
 
 function addSong(){
- 
-  
-  
+ var title= $("#Add_Song").val();
+ var artist= $("Add_Artist").val();
+ var link= $("Add_Link").val();
+ var image= $("Add_Image").val();
+ var add= {
+ 	"title": title,
+ 	"artist": artist,
+ 	"link" : link,
+ 	"image": image
+ }
+ }
+
+function clearList(){
+   $('.songs').empty();
 }
+
+function displayList(){
+ for (var i = 0; i < myPlayList.length; i++){
+        $('.songs').append('<p>' + myPlayList[i].title +'<p>');
+        $('.songs').append('<p>' + myPlayList[i].artist +'<p>');
+        $('.songs').append('<p>' + myPlayList[i].link +'<p>');
+        $('.songs').append('<p>' + myPlayList[i].image +'<p>');
+        
+    }
+}
+});
